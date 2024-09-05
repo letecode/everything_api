@@ -46,7 +46,7 @@ class AuthController extends BaseController
     public function login(Request $request): JsonResponse
     {
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
-            $user = Auth::user();
+            $user = User::auth();
             $success['token'] = $user->createToken('EveryThing')->plainTextToken;
             $success['user'] = new UserResource($user);
 
