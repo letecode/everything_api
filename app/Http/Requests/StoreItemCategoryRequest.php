@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Auth;
 
-class StoreLikeRequest extends FormRequest
+class StoreItemCategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,8 +25,10 @@ class StoreLikeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id' => ['required', 'uuid'],
-            'item_id' => ['required', 'uuid'],
+            'name' => ['required', 'string', 'max:250'],
+            'cover' => ['nullable', 'file'],
+            'description' => ['nullable', 'string', 'max:1500'],
+            'theme' => ['nullable', 'string', 'max:200']
         ];
     }
 

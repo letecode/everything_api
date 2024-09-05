@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Support\Facades\Auth;
 
 class UpdateLikeRequest extends FormRequest
 {
@@ -11,7 +14,7 @@ class UpdateLikeRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return Auth::user() != null;
     }
 
     /**
@@ -22,7 +25,17 @@ class UpdateLikeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'user_id' => ['required', 'uuid'],
+            'item_id' => ['required', 'uuid'],
         ];
+    }
+
+    public function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json([
+            'success'   => false,
+            'message'   => 'Validation errors',
+            'data'      => $validator->errors()
+        ]));
     }
 }

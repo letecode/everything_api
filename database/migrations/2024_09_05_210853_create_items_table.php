@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('user_id');
-            $table->foreignUuid('item_category_id');
+            $table->foreignUuid('item_category_id')->nullable();
             $table->string('name');
             $table->string('summary')->nullable();
             $table->text('description')->nullable();
