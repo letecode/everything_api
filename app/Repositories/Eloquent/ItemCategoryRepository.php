@@ -62,7 +62,7 @@ class ItemCategoryRepository implements ItemCategoryRepositoryInterface
      * @param array $inputs
      * @return ItemCategory
      */
-    public function createItem(array $inputs)
+    public function create(array $inputs)
     {
         return $this->itemCategory->create($inputs);
     }
@@ -72,7 +72,7 @@ class ItemCategoryRepository implements ItemCategoryRepositoryInterface
      *
      * @return ItemCategory
      */
-    public function updateItem(array $inputs, $id)
+    public function update(array $inputs, $id)
     {
         $instance = $this->getById($id);
         foreach($inputs as $property => $value)
@@ -86,7 +86,7 @@ class ItemCategoryRepository implements ItemCategoryRepositoryInterface
      *
      * @return void
      */
-    public function deleteItem($id)
+    public function delete($id)
     {
         $this->getById($id)->delete();
     }

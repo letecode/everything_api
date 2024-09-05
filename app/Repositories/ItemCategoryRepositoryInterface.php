@@ -7,7 +7,7 @@ interface ItemCategoryRepositoryInterface
     public function getById($itemId);
     public function getAll();
     public function getWithPagination($n);
-    public function createItem(array $inputs);
-    public function updateItem(array $inputs, $itemId);
-    public function deleteItem($itemId);
+    public function create(array $inputs);
+    public function update(array $inputs, $itemId);
+    public function delete($itemId);
 }
