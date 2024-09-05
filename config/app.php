@@ -15,6 +15,18 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+     /*
+    |--------------------------------------------------------------------------
+    | Api Key
+    |--------------------------------------------------------------------------
+    |
+    | This value is the Api key that authorize you to access any request of this
+    | application. when trying online, you can get this key in the Letecode Community
+    |
+    */
+
+    'api_key' => env('API_KEY', null),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
