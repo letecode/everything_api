@@ -13,8 +13,8 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        $middleware->alias([
-            'apikey' => EnsureCanUseApi::class,
+        $middleware->api(prepend: [
+            EnsureCanUseApi::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
